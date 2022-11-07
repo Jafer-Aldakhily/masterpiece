@@ -3,7 +3,7 @@ import { NavLink,Link } from 'react-router-dom'
 import {RiHomeFill} from 'react-icons/ri'
 import {IoIosArrowForward} from 'react-icons/io'
 import userImage from '../assets/0018.jpg'
-import data from '../data.js'
+import categories from '../utils/data'
 import logo from '../assets/logo.png'
 
 
@@ -11,15 +11,6 @@ const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-
 const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-2 border-black  transition-all duration-200 ease-in-out capitalize';
 
 const Sidebar = ({ closeToggle, user }) => {
-
-  const categories = [
-    {id:1,name:'Animals',pin:"pin1"},
-    {id:2,name:'Wallapapers',pin:"pin2"},
-    {id:3,name:'Photography',pin:"pin3"},
-    {id:4,name:'Gaming',pin:"pin4"},
-    {id:5,name:'Coding',pin:"pin5"},
-    {id:6,name:'Other'},
-  ]
   
 
   const handleCloseSidebar = () => {

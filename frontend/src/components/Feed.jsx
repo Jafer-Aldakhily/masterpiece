@@ -15,6 +15,8 @@ const [pins,setPins] = useState(null)
         if(categoryId)
         {
           // signle record
+          // you need to know you will 
+          // create a pin in a future when you build a backend
           const result = categories.filter(category => category.name == categoryId)
           setPins(result)
           setLoading(false)
@@ -27,7 +29,7 @@ const [pins,setPins] = useState(null)
   },[categoryId])
 
 
-  if(loading) return <Spinner message="we are adding new ideas to your feed" />
+  if(loading) return <Spinner message={`we are adding new ideas to your ${categoryId}`} />
 
 
 

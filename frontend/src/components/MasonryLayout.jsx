@@ -13,7 +13,7 @@ export default function MasonryLayout({pins}) {
   return (
     <div>
       <Masonry className='flex animate-slide-fwd' breakpointCols={breakpointObj}>
-        {pins?.map((pin) => <Pin key={pin.name}  pin={pin} />)}
+        {pins?.map((pin) => <Pin key={pin.id}  pin={pin} />)}
       </Masonry>
     </div>
   )

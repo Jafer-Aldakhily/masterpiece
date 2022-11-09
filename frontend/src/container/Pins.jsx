@@ -12,7 +12,7 @@ export default function Pins({user}) {
         <Routes>
           <Route path="/"  element={<Feed />} />
           <Route path="/category/:categoryId"  element={<Feed />} />
-          <Route path="/pin-detail/:pinId"  element={<PinDetail user="user" />} />
+          <Route path="/pin-detail/:pinId"  element={<PinDetail user="Morad" />} />
           <Route path="/create-pin"  element={<CreatePin user="user" />} />
           <Route path="/search"  element={<Search searchTerm={searchTerm} setSearchTerm={searchTerm} />} />
         </Routes>

@@ -4,11 +4,12 @@ import categories from '../utils/data'
 
 import MasonryLayout from './MasonryLayout'
 import Spinner from './Spinner'
+import images from '../utils/data2'
 export default function Feed() {
 // Now I will write hard code but I will convert at to a dynamic code later on with backend
 const [loading,setLoading] = useState(false)
 const [pins,setPins] = useState(null)
-  const {categoryId} = useParams()
+const {categoryId} = useParams()
 
   useEffect(() => {
         setLoading(true)
@@ -17,7 +18,7 @@ const [pins,setPins] = useState(null)
           // signle record
           // you need to know you will 
           // create a pin in a future when you build a backend
-          const result = categories.filter(category => category.name == categoryId)
+          const result = images.filter(category => category.id == categoryId)
           setPins(result)
           setLoading(false)
         }else{

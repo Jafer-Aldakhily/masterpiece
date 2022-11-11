@@ -54,7 +54,7 @@ const Pin = ({ pin }) => {
           >
             <div className="flex items-center justify-between">
               <div className="flex gap-2">
-                {/* <a
+                <a
                   href={`${image?.asset?.url}?dl=`}
                   download
                   onClick={(e) => {
@@ -62,7 +62,7 @@ const Pin = ({ pin }) => {
                   }}
                   className="bg-white w-9 h-9 p-2 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-md outline-none"
                 ><MdDownloadForOffline />
-                </a> */}
+                </a>
               </div>
               {alreadySaved?.length !== 0 ? (
                 <button type="button" className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none">

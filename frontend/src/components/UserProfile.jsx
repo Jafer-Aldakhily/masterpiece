@@ -6,6 +6,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import MasonryLayout from './MasonryLayout';
 import Spinner from './Spinner';
 import usersData from '../utils/data3'
+import images from '../utils/data2'
 
 const activeBtnStyles = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none';
 const notActiveBtnStyles = 'bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none';
@@ -30,17 +31,11 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (text === 'Created') {
-      // const createdPinsQuery = userCreatedPinsQuery(userId);
-
-      // client.fetch(createdPinsQuery).then((data) => {
-      //   setPins(data);
-      // });
+      const result = images.filter(img => img.create == user?.name)
+      setPins(result)
     } else {
-      // const savedPinsQuery = userSavedPinsQuery(userId);
-
-      // client.fetch(savedPinsQuery).then((data) => {
-      //   setPins(data);
-      // });
+      const result = images.filter(img => img.save == user?.name)
+      setPins(result)
     }
   }, [text, userId]);
 

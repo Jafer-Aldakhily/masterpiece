@@ -2,7 +2,7 @@ import React from 'react'
 
 import shareVideo from '../assets/share.mp4'
 import logo from '../assets/logowhite.png'
-// import {useNavigate} from 'react-router-dom'
+import {useNavigate,Link} from 'react-router-dom'
 import {FcGoogle} from 'react-icons/fc'
 import {TextInput,Label} from 'flowbite-react'
 import {HiMail} from 'react-icons/hi'
@@ -72,12 +72,13 @@ export default function Login() {
       <div className="shadow-2xl">
       <button type="button" 
       className="bg-mainColor flex justify-center items-center p-3 rounded-lg 
-      cursor-pointer outline-none"
+      cursor-pointer outline-none mb-5"
       onClick={() => alert("yes it is working")}
       > 
         <FcGoogle className="mr-4" /> Sign in with google
         </button>
       </div>
+      <Link to="/" className='text-white hover:cursor-pointer'>Create account !</Link>
         </div>
 
       </div>

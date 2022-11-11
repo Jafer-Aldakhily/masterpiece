@@ -4,7 +4,7 @@ import {RiHomeFill} from 'react-icons/ri'
 import {IoIosArrowForward} from 'react-icons/io'
 import userImage from '../assets/0018.jpg'
 import categories from '../utils/data'
-import logo from '../assets/logo.png'
+import logo from '../assets/darklogo.png';
 
 
 const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize';

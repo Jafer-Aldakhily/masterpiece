@@ -6,7 +6,7 @@ import {useNavigate,Link} from 'react-router-dom'
 import {FcGoogle} from 'react-icons/fc'
 import {TextInput,Label} from 'flowbite-react'
 import {HiMail} from 'react-icons/hi'
-export default function Login() {
+export default function SignUp() {
   return (
     <div className="flex justify-start items-center flex-col h-screen">
       <div className="relative w-full h-full">
@@ -28,6 +28,37 @@ export default function Login() {
         </div>
 
         <div className='pb-5 flex flex-col justify-center items-start'>
+            {/* username */}
+        <div className="mb-2  text-white ">
+            <Label
+              htmlFor="email4"
+              value="Your username"
+            />
+          </div>
+            {/* phone number */}
+          <TextInput
+            id="username"
+            type="text"
+            placeholder="Username"
+            required={true}
+            // icon={HiMail}
+            className="my-2"
+          />
+          <div className="mb-2  text-white ">
+            <Label
+              htmlFor="phone"
+              value="Your phone"
+            />
+          </div>
+          <TextInput
+            id="phone"
+            type="number"
+            placeholder="Phone"
+            required={true}
+            // icon={HiMail}
+            className="my-2"
+          />
+            {/* email */}
           <div className="mb-2  text-white ">
             <Label
               htmlFor="email4"
@@ -42,6 +73,7 @@ export default function Login() {
             // icon={HiMail}
             className="my-2"
           />
+            {/* password */}
           <div className="mb-2  text-white">
             <Label
               htmlFor="password"
@@ -55,6 +87,20 @@ export default function Login() {
             required={true}
             className="my-2"
           />
+            {/* confirm password */}
+          <div className="mb-2  text-white">
+            <Label
+              htmlFor="confirm password"
+              value="confirm password"
+            />
+          </div>
+          <TextInput
+            id="confirm-password"
+            type="password"
+            placeholder="Confirm Password"
+            required={true}
+            className="my-2"
+          />
 
                 <button
                   onClick={(e) => {
@@ -63,22 +109,10 @@ export default function Login() {
                   type="button"
                   className="bg-red-500 hover:bg-red-600 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none"
                 >
-                  Login
+                  Create account
                 </button>
           </div>
-
-
-
-      <div className="shadow-2xl">
-      <button type="button" 
-      className="bg-mainColor flex justify-center items-center p-3 rounded-lg 
-      cursor-pointer outline-none mb-5"
-      onClick={() => alert("yes it is working")}
-      > 
-        <FcGoogle className="mr-4" /> Sign in with google
-        </button>
-      </div>
-      <Link to="/register" className='text-white hover:cursor-pointer'>Create account !</Link>
+      <Link to="/login" className='text-white hover:cursor-pointer'>Already have an account !</Link>
         </div>
 
       </div>

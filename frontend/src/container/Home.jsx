@@ -3,7 +3,7 @@ import {HiMenu} from 'react-icons/hi';
 import {AiFillCloseCircle} from 'react-icons/ai';
 import {Link,Route,Routes} from 'react-router-dom';
 import {Sidebar,UserProfile} from '../components';
-import logo from '../assets/logo.png';
+import logo from '../assets/darklogo.png';
 import userImage from '../assets/0018.jpg'
 import Pins from './Pins';  
 export default function Home() {

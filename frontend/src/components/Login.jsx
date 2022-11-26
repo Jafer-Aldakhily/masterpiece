@@ -26,7 +26,7 @@ export default function Login() {
         <div className="p-5">
           <img src={logo} width="130px" alt="logo" />
         </div>
-
+ 
         <div className='pb-5 flex flex-col justify-center items-start'>
           <div className="mb-2  text-white ">
             <Label

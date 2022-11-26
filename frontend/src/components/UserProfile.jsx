@@ -54,7 +54,7 @@ const UserProfile = () => {
           <div className="flex flex-col justify-center items-center">
             <img
               className=" w-full h-370 2xl:h-510 shadow-lg object-cover"
-              src="https://source.unsplash.com/1600x900/?nature,photography,technology"
+              src="https://images.unsplash.com/photo-1548197253-652ffe79752c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
               alt="user-pic"
             />
             <img

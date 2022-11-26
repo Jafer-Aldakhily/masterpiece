@@ -31,7 +31,6 @@ const Pin = ({ pin }) => {
   alreadySaved = alreadySaved?.length > 0 ? alreadySaved : [];
 
   const savePin = (id) => {
-    console.log(id);
     if (alreadySaved?.length === 0) {
       setSavingPost(true);
     }

@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::group(['middleware' => 'adminauth'], function () {
+    Route::get('/', function () {
+        return view('index');
+    })->name('adminDashboard');
 });
 
-Route::get('/register', [AuthController::class, 'register']);
-Route::get('/login', [AuthController::class, 'login']);
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/login', [AdminAuthController::class, 'getLogin'])->name('adminLogin');
+    Route::post('/login', [AdminAuthController::class, 'postLogin'])->name('adminLoginPost');
+    Route::get('/logout', [AdminAuthController::class, 'adminLogout'])->name('adminLogout');
+    Route::get('/profile', [AdminProfileController::class, 'adminProfile'])->name('adminProfile');
+    Route::put('/update/profile', [AdminProfileController::class, 'updateProfile'])->name('updateAdmin');
+    Route::put('/update/password', [AdminProfileController::class, 'updatePassword'])->name('updatePassword');
+    Route::put('/update/avatar', [AdminProfileController::class, 'updateAvatar'])->name('updateAvatar');
+    Route::resource('/users', '\App\Http\Controllers\Admin\AdminUserController');
+    Route::resource('/categories', '\App\Http\Controllers\Admin\CategoryController');
+});

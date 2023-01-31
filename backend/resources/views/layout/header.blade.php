@@ -166,13 +166,16 @@
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->
+        {{-- @dd(auth()->guard("admin")->user()) --}}
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="text-transform: capitalize">{{ auth()->guard("admin")->user()->first_name}} {{ auth()->guard("admin")->user()->last_name}}</span>
-                @if (auth()->guard('admin')->user()->admin_image)
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="text-transform: capitalize">{{ auth()->guard("admin")->user()?->first_name}} {{ auth()->guard("admin")->user()?->last_name}}</span>
+                @if (auth()->guard('admin')->user()?->admin_image)
+                {{-- <img class="img-profile rounded-circle"
+                src="/images/{{ auth()->guard('admin')->user()->admin_image }}"> --}}
                 <img class="img-profile rounded-circle"
-                src="/images/{{ auth()->guard('admin')->user()->admin_image }}">
+                src="{{ auth()->guard("admin")->user()->admin_image }}">
                 @endif
             </a>
             <!-- Dropdown - User Information -->

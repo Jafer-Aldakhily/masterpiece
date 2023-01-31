@@ -15,12 +15,25 @@ class AdminAuthenticated
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+
+    // public function __construct()
+    // {
+    //     $this->middleware(function ($request, $next) {
+    //         $this->user = Auth::user();
+    //         return $next($request);
+    //     });
+    // }
+
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('admin')->user()) {
+        // $this->middleware(function ($request, $next) {
+        //     $this->user = Auth::user();
+        //     return $next($request);
+        // });
+
+        if (auth()->guard('admin')->user()) {
             return $next($request);
         }
-
         return redirect()->route('adminLogin');
     }
 }

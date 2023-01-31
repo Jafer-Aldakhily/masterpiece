@@ -11,5 +11,11 @@ class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $guard = "admin";
+    protected $primaryKey = 'id';
     use HasFactory;
+
+    public function getAuthIdentifierName()
+    {
+        return 'id';
+    }
 }

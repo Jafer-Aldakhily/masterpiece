@@ -26,7 +26,8 @@
                                     <div class="my-2 bg-danger p-2 text-white rounded">{{ Session::get('error') }}</div>
                                     @endif
                                     <form class="user" action="{{ route('adminLoginPost') }}" method="post">
-                                        @csrf
+                                        {{-- @csrf --}}
+                                        {{-- <input type="hidden" name="_token" value={{ csrf_token() }}> --}}
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"

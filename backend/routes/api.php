@@ -36,6 +36,8 @@ Route::delete("/delete/pin/{id}", [PinController::class, "deletePin"]);
 Route::get("/profile/{id}", [AuthController::class, "getProfileForEdit"]);
 Route::post("/update/profile/{id}", [AuthController::class, "updateProfile"]);
 Route::post("/forget/password", [AuthController::class, "forgetPassword"]);
+// Route::post("/reset/password", [AuthController::class, "resetPassword"]);
+Route::post("/reset/password", [AuthController::class, "resetPassword"]);
 
 // Protected routes---------------------------------------
 Route::group(['middleware' => ['auth:sanctum']], function () {

@@ -4,23 +4,25 @@ import shareVideo from "../assets/share.mp4";
 import logo from "../assets/whitelogo.png";
 import { TextInput, Label } from "flowbite-react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useNavigation } from "react-router-dom";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
 
 export default function ForgetPassword() {
   const [email, setEmail] = useState("");
+  // const navigation = useNavigation();
   const navigate = useNavigate();
-
   const checkEmail = () => {
     const data = {
       email: email,
     };
-    axios.post(`/api/forget/password`).then((response) => {
+    axios.post(`/api/forget/password`, data).then((response) => {
       //   console.log(response.data.status);
       if (response.data.status == 200) {
-        Swal.fire("Good job!", response.data.message, "success");
-        navigate("/login");
+        // Swal.fire("Good job!", response.data.message, "success");
+        const email = response.data.email;
+        navigate("/reset/password", { state: email });
+        // navigation.navigate("/reset/password", response.data.message);
       } else {
         Swal.fire({
           icon: "error",

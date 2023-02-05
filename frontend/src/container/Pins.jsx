@@ -12,6 +12,7 @@ import {
 } from "../components";
 import ForgetPassword from "../components/ForgetPassword";
 import Logout from "../components/Logout";
+import ResetPassword from "../components/ResetPassword";
 export default function Pins({ user }) {
   const [indexPins, setIndexPins] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,6 +35,7 @@ export default function Pins({ user }) {
           <Route path="/" element={<Feed authUser={user} />} />
           <Route path="/login" element={<Login />} />
           <Route path="forget/password" element={<ForgetPassword />} />
+          <Route path="reset/password" element={<ResetPassword />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/category/:categoryId" element={<Feed />} />
           <Route

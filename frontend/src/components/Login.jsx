@@ -120,13 +120,13 @@ export default function Login() {
 
       <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
         <div className="">
-          <div className="p-5">
+          <div className="p-1">
             <img src={logo} width="130px" alt="logo" />
           </div>
 
           <div className="pb-5 flex flex-col justify-center items-start">
             <div className="mb-2  text-white ">
-              <Label htmlFor="email4" value="Your email" />
+              {/* <Label htmlFor="email4" value="Your email" /> */}
             </div>
             <TextInput
               id="email4"
@@ -138,7 +138,7 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
             <div className="mb-2  text-white">
-              <Label htmlFor="password" value="Your password" />
+              {/* <Label htmlFor="password" value="Your password" /> */}
             </div>
             <TextInput
               id="password"

@@ -1,9 +1,13 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Models\Comment;
+use App\Models\Pin;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +20,19 @@ use App\Http\Controllers\Admin\AdminProfileController;
 |
 */
 
+
+
 // Route::group(['middleware' => 'adminauth'], function () {
+//     Route::get('/', function () {
+//         return view('index');
+//     })->name('adminDashboard');
 // });
 Route::get('/', function () {
-    // dd(Auth::guard("admin")->user());
-    return view('index');
+    $users = count(User::all());
+    $pins = count(Pin::all());
+    $comments = count(Comment::all());
+    $saved_pins = count(Pin::where("number_of_saved", ">", 0)->get());
+    return view('index', compact("users", "pins", "comments", "saved_pins"));
 })->name('adminDashboard');
 // Route::group(['middleware' => 'guest:admin'], function () {
 // });

@@ -56,10 +56,11 @@ const Pin = ({ pin, authUser }) => {
   alreadySaved = alreadySaved?.length > 0 ? alreadySaved : [];
 
   const savePin = (id) => {
+    console.log(authUser);
     if (alreadySaved?.length === 0) {
       setSavingPost(true);
       const data = {
-        user_id: user.id,
+        user_id: authUser.id,
         pin_id: id,
       };
       axios

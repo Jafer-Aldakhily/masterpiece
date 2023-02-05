@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminAuthController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('guest')->except('logout');
-    //     $this->middleware('guest:admin')->except('logout');
-    // }
     public function getLogin()
     {
         return view('auth.login');
@@ -27,11 +23,9 @@ class AdminAuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        if (auth()->guard('admin')->attempt(['email' => $request->email,  'password' => $request->password])) {
-            $user = auth()->guard('admin')->user();
-            // dd($user);
-            return redirect()->route('adminDashboard')->with('success', 'Welcome');
-            // return redirect()->intended('/');
+        if (Auth::guard("admin")->attempt(["email" => $request->email, "password" => $request->password])) {
+            $admin = Auth::guard('admin')->user();
+            return redirect()->route('adminDashboard');
         } else {
             return back()->with('error', 'Whoops! invalid email and password.');
         }
@@ -59,5 +53,10 @@ class AdminAuthController extends Controller
         //     dd("session is invalid");
         // }
         return view('testResult');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

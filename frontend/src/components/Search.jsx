@@ -7,7 +7,7 @@ import axios from "axios";
 export default function Search({ searchTerm }) {
   const [pins, setPins] = useState([]);
   const [allPins, setAllPins] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   // const [allpins, setAllpins] = useState(indexPins);
   const [search, setSearch] = useState("");
 
@@ -20,33 +20,31 @@ export default function Search({ searchTerm }) {
     });
   }, []);
 
+  // search with wihte spaces
+  const validate = (inputText) => {
+    setSearch("#" + inputText + "#");
+    const result = pins.filter((pin) =>
+      pin.title.toLowerCase.includes(inputText.toLowerCase())
+    );
+  };
   useEffect(() => {
     if (searchTerm !== "") {
       setLoading(true);
-      setPins(() => {
-        return pins
-          .filter((pin) =>
-            pin.title.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-          .map((pin) => pin);
-      });
-      // setSearch(searchTerm.toLowerCase());
-      // axios
-      //   .get(`http://127.0.0.1:8000/api/all/pins/${search}`)
-      //   .then((response) => {
-      //     setPins(response.data.pins);
-      //     setLoading(false);
-      //   });
+      axios
+        .get(`http://127.0.0.1:8000/api/all/pins/${searchTerm.toLowerCase()}`)
+        .then((response) => {
+          setPins(response.data.pins);
+          console.log(pins);
+          setLoading(false);
+        });
     } else {
       setLoading(true);
       axios.get("http://127.0.0.1:8000/api/all/pins").then((response) => {
         setPins(response.data.pins);
         setAllPins(response.data.pins);
-        console.log(response.data.pins);
+        // console.log(response.data.pins);
         setLoading(false);
       });
-      // setPins(allPins);
-      // setLoading(false);
     }
   }, [searchTerm]);
 

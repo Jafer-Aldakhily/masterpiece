@@ -220,6 +220,7 @@ class AuthController extends Controller
             // do the steps to reset password
             return response()->json([
                 "status" => 200,
+                "email" => $user->email,
                 "message" => "Check your email to reset password!"
             ]);
         } else {
@@ -228,5 +229,21 @@ class AuthController extends Controller
                 "message" => "Your email is incorrect"
             ]);
         }
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            "email" => "required|email|exists:users",
+        ]);
+
+        $user = User::where("email", $request->email)->first();
+        // $user = DB::table('users')->where('email', $request->email)->first();
+        $user->password = Hash::make($request->password);
+        $user->update();
+        return response()->json([
+            "status" => 200,
+            "message" => "Your password is changed successfully"
+        ]);
     }
 }

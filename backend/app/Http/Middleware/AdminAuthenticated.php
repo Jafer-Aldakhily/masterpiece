@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminAuthenticated
 {
@@ -16,22 +17,11 @@ class AdminAuthenticated
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
 
-    // public function __construct()
-    // {
-    //     $this->middleware(function ($request, $next) {
-    //         $this->user = Auth::user();
-    //         return $next($request);
-    //     });
-    // }
+
 
     public function handle(Request $request, Closure $next)
     {
-        // $this->middleware(function ($request, $next) {
-        //     $this->user = Auth::user();
-        //     return $next($request);
-        // });
-
-        if (auth()->guard('admin')->user()) {
+        if (Auth::guard('admin')->user()) {
             return $next($request);
         }
         return redirect()->route('adminLogin');

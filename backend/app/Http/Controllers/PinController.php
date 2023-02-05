@@ -80,8 +80,8 @@ class PinController extends Controller
     {
         // $projects = Project::latest()->filter(request(["search"]))->get();
 
-        // $pins = Pin::with('user')->filter($search)->get();
-        $pins = Pin::with('user')->get();
+        $pins = Pin::with('user')->filter($search)->get();
+        // $pins = Pin::with('user')->get();
         // $pins = request(["search"]);
         return response()->json([
             "status" => 200,
